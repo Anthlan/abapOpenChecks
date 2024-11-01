@@ -74,7 +74,7 @@ CLASS zcl_aoc_check_58 IMPLEMENTATION.
       RETURN.
     ENDIF.
 
-    mo_scan = zcl_aoc_class_def_scan=>get_scan_by_ref( io_ref = ref_scan ).
+    mo_scan = zcl_aoc_class_def_scan=>get_scan_by_ref( ref_scan ).
 
     check_methods( ).
     check_constants( ).
@@ -172,11 +172,11 @@ CLASS zcl_aoc_check_58 IMPLEMENTATION.
 
       IF lines( lt_ref_include ) = 0 AND object_type = 'CLAS'.
         IF <ls_method>-alias = abap_false.
-          report_clas(  is_method   = <ls_method>
-                        iv_err_code = '001' ).
+          report_clas( is_method   = <ls_method>
+                       iv_err_code = '001' ).
         ELSE.
-          report_clas(  is_method   = <ls_method>
-                        iv_err_code = '007' ).
+          report_clas( is_method   = <ls_method>
+                       iv_err_code = '007' ).
         ENDIF.
       ELSEIF lines( lt_ref_include ) = 0 AND object_type = 'INTF'.
         inform( p_param_1 = <ls_method>-cmpname
@@ -191,9 +191,8 @@ CLASS zcl_aoc_check_58 IMPLEMENTATION.
             ct_include = lt_ref_include ).
 
         IF lines( lt_ref_include ) = 0.
-          report_clas(
-            is_method   = <ls_method>
-            iv_err_code = '003' ).
+          report_clas( is_method   = <ls_method>
+                      iv_err_code = '003' ).
         ENDIF.
       ELSEIF object_type = 'INTF'.
         filter_implementations(
